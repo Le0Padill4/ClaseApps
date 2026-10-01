@@ -89,7 +89,7 @@ VIBE tiene sentido para un prototipo local y desechable —por ejemplo, probar e
 - [x] Las cuatro búsquedas SOLID de SDD dieron los resultados descritos arriba.
 - [x] Pruebas temporales restauradas en VIBE; los seis flujos se comprobaron manualmente.
 - [x] Las 13 tareas de `specs/001-divisor-cuenta/tasks.md` quedaron marcadas.
-- [ ] Publicar en GitHub las ramas `main`, `vibe` y `sdd` sin forzar ni reescribir historia.
+- [x] Publicar en GitHub las ramas `main`, `vibe` y `sdd` sin forzar ni reescribir historia; confirmé las tres refs remotas.
 
 ## Adaptación de Spec Kit
 
