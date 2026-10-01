@@ -7,7 +7,7 @@
 
 ## Phase 1: Setup
 
-- [X] T001 Usar el proyecto Flutter base y verificar flutter pub get sin añadir dependencias.
+- [X] T001 Usar el proyecto Flutter base y verificar flutter pub get y quitar dependencias no usadas de la plantilla, sin añadir paquetes.
 - [X] T002 Crear AGENTS.md, inicializar Spec Kit y establecer la Constitution.
 
 ## Phase 2: User Story 1 - Dividir una cuenta (P1)
