@@ -1,50 +1,51 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Divisor de cuenta Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. SRP — Responsabilidad única
+Cada clase tiene una razón de cambio. El cálculo no valida entradas ni formatea
+moneda; la validación, presentación y cálculo permanecen separados.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. OCP — Abierto/cerrado
+`CalcularDivision` depende de `EstrategiaRedondeo`. Agregar otra estrategia de
+redondeo no requiere modificar el cálculo ni estrategias ya existentes.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. LSP — Sustitución de Liskov
+Cualquier implementación de `EstrategiaRedondeo` puede sustituir a otra sin
+que quien calcula pregunte el tipo concreto ni haga casts.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. ISP — Segregación de interfaces
+`EstrategiaRedondeo` expone un único método para redondear un valor; ningún
+cliente depende de operaciones que no utiliza.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. DIP — Inversión de dependencias
+La presentación depende de abstracciones del domain. `domain` no importa
+Flutter y no depende de `data`. Solo `main.dart` instancia implementaciones
+concretas.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Restricciones adicionales
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- La aplicación es una sola pantalla para monto, personas, propina y resultado.
+- Las capas son `presentation`, `domain` y `data`, con dependencias
+  `presentation -> domain <- data`.
+- `domain` es Dart puro. La app funciona sin red ni base de datos.
+- No se agregan paquetes externos ni secretos al repositorio.
+- Se usa null safety y nombres en español.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Calidad y aprendizaje
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Cada criterio de aceptación tiene una prueba ejecutable; el cálculo crítico
+  tiene pruebas sin widgets y la pantalla tiene pruebas de widgets.
+- El proyecto debe pasar `flutter test`, `flutter analyze` y
+  `flutter build apk --debug`.
+- El estudiante debe poder explicar cada función generada: propósito, entradas,
+  salida y errores posibles.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+Esta constitución gobierna la implementación y prevalece sobre decisiones de
+plan o código que la contradigan. Todo cambio a estos principios requiere
+actualizar este archivo y su versión. En cada revisión se comprueban las capas,
+los cinco principios SOLID y las pruebas requeridas por la spec.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-10-01 | **Last Amended**: 2026-10-01
