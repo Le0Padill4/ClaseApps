@@ -33,7 +33,7 @@
 
 - [X] T011 Ejecutar flutter test, flutter analyze y flutter build apk --debug y corregir lo necesario.
 - [X] T012 Ejecutar los cuatro grep de arquitectura/SOLID definidos en la práctica y revisar su resultado.
-- [ ] T013 Llevar temporalmente los tres archivos de prueba SDD a VIBE, registrar el resultado y restaurar el test/ original.
+- [X] T013 Llevar temporalmente los tres archivos de prueba SDD a VIBE, registrar el resultado y restaurar el test/ original.
 
 ## Dependencias y orden
 
