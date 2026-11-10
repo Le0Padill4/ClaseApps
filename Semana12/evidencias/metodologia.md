@@ -9,3 +9,11 @@ Las pruebas realizadas con límite de 55 segundos no concluyeron dentro de ese p
 En los reintentos de comparación, las sesiones sin y con skill sí completaron sus respuestas; el skill general `tareas-academicas` estuvo presente en la sesión sin `incident-investigator`. El reintento explícito llegó a leer `SKILL.md` y `detection-rules.md` y produjo un mensaje intermedio con hallazgos, pero se interrumpió a los 150 segundos antes de la respuesta final. La lectura real está en la traza, y el informe terminado con el skill corresponde a la sesión independiente de comparación.
 
 El reintento del control negativo sí terminó: contó 63 eventos de 01:00 a 01:59 y 30 de 02:00 a 02:59. Usó una guía de hojas de cálculo; en sus comandos no se observó lectura de `incident-investigator`. No fue necesario ajustar la descripción por las observaciones de activación contextual y control negativo.
+
+## Repetición sin conectores
+
+Se repitieron las cinco pruebas con `--ignore-user-config --disable apps --disable plugins --disable remote_plugin -s read-only`. Las cinco terminaron y sus salidas de diagnóstico no registraron menciones a MCP. La explícita y la contextual leyeron el skill y sus reglas; el control negativo no los leyó y contó 63 eventos en la primera hora y 30 en la segunda. La comparación nueva se hizo en dos procesos independientes y está en `comparacion.md`.
+
+Para comprobar el aislamiento de los comandos, se ejecutó una prueba separada en el mismo modo: un programa escuchaba en `127.0.0.1` y el comando ejecutado por Codex intentó conectarse. `connect_ex` devolvió `1` y el servidor no recibió la conexión; la traza está en `sondeo_sandbox.json`. Esto demuestra el resultado de esa prueba local, no una auditoría exhaustiva de todas las rutas de red. El proceso de Codex siguió necesitando conexión al servicio del modelo; no se consultaron servicios externos para investigar las IP.
+
+Las trazas anteriores se conservan para mostrar el primer intento y su limitación de conectores. Los archivos `*_sin_conectores.jsonl` corresponden a la repetición. El texto de salida se redactó antes de guardarse, por lo que una sustitución puede afectar la puntuación alrededor de `token=`; las salidas son extractos, no transcripciones byte por byte.

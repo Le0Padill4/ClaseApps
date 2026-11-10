@@ -1,0 +1,62 @@
+{
+  "exit": 0,
+  "mcp_mentions_in_stderr": 0,
+  "server_accepted": false,
+  "events": [
+    {
+      "type": "thread.started",
+      "thread_id": "01a1c6e1-a755-78d0-85b4-9fa85ece6f9b"
+    },
+    {
+      "type": "turn.started"
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_0",
+        "type": "agent_message",
+        "text": "Ejecutaré el comando local indicado."
+      }
+    },
+    {
+      "type": "item.started",
+      "item": {
+        "id": "item_1",
+        "type": "command_execution",
+        "command": "/bin/zsh -lc \"python3 -c \\\"import socket; s=socket.socket(); s.settimeout(2); print(s.connect_ex(('127.0.0.1',56365)))\\\"\"",
+        "aggregated_output": "",
+        "exit_code": null,
+        "status": "in_progress"
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_1",
+        "type": "command_execution",
+        "command": "/bin/zsh -lc \"python3 -c \\\"import socket; s=socket.socket(); s.settimeout(2); print(s.connect_ex(('127.0.0.1',56365)))\\\"\"",
+        "aggregated_output": "1\n",
+        "exit_code": 0,
+        "status": "completed"
+      }
+    },
+    {
+      "type": "item.completed",
+      "item": {
+        "id": "item_2",
+        "type": "agent_message",
+        "text": "```text\n1\n```"
+      }
+    },
+    {
+      "type": "turn.completed",
+      "usage": {
+        "input_tokens": 28826,
+        "cached_input_tokens": 26240,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 93,
+        "reasoning_output_tokens": 0
+      }
+    }
+  ]
+}
